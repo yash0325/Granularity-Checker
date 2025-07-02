@@ -93,7 +93,6 @@ if st.session_state.get("connected", False):
         issues = []
 
     if issues:
-        # Option to show only issues that have not been checked yet
         st.subheader("Select a User Story")
         issue_titles = []
         filtered_issues = []
@@ -106,7 +105,7 @@ if st.session_state.get("connected", False):
         selected_issue = filtered_issues[issue_titles.index(selected)]
         summary = selected_issue.fields.summary
         description = selected_issue.fields.description or ""
-        user_story_text = f"{summary}\n\n{description}".strip()
+        user_story_text = description.strip()   # <---- ONLY DESCRIPTION
 
         col1, col2 = st.columns(2)
         with col1:
